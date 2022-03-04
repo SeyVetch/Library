@@ -65,6 +65,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ClassHelper\AppData.cs" />
+    <Compile Include="ClassHelper\DebtClass.cs" />
     <Compile Include="EF\Author.cs">
       <DependentUpon>EntityFramework.tt</DependentUpon>
     </Compile>

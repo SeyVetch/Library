@@ -31,6 +31,7 @@ namespace Library.EF
         public int SectionID { get; set; }
         public int PublishHouseID { get; set; }
         public bool IsDeleted { get; set; }
+        public decimal Price { get; set; }
     
         public virtual PublishHouse PublishHouse { get; set; }
         public virtual Section Section { get; set; }

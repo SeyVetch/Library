@@ -26,6 +26,7 @@
           <Property Name="SectionID" Type="int" Nullable="false" />
           <Property Name="PublishHouseID" Type="int" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "Library.dbo.BookAuthor" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
@@ -92,9 +93,11 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ClientID" Type="int" Nullable="false" />
           <Property Name="BookID" Type="int" Nullable="false" />
-          <Property Name="DateIssue" Type="datetime" Nullable="false" />
-          <Property Name="DateReturn" Type="datetime" Nullable="false" />
+          <Property Name="DateIssue" Type="date" Nullable="false" />
+          <Property Name="DateReturn" Type="date" Nullable="false" />
+          <Property Name="DateTurnIn" Type="date" />
           <Property Name="WorkerID" Type="int" />
+          <Property Name="IsPaidFor" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="PublishHouse">
           <Key>
@@ -446,6 +449,7 @@
           <NavigationProperty Name="Issue" Relationship="LibraryModel.FK_Issue_Book" FromRole="Book" ToRole="Issue" />
           <NavigationProperty Name="Genre" Relationship="LibraryModel.BookGenre" FromRole="Book" ToRole="Genre" />
           <NavigationProperty Name="Author" Relationship="LibraryModel.BookAuthor" FromRole="Book" ToRole="Author" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -499,12 +503,15 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ClientID" Type="Int32" Nullable="false" />
           <Property Name="BookID" Type="Int32" Nullable="false" />
-          <Property Name="DateIssue" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DateReturn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateIssue" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateReturn" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="WorkerID" Type="Int32" />
           <NavigationProperty Name="Book" Relationship="LibraryModel.FK_Issue_Book" FromRole="Issue" ToRole="Book" />
           <NavigationProperty Name="Client" Relationship="LibraryModel.FK_Issue_Client" FromRole="Issue" ToRole="Client" />
           <NavigationProperty Name="Employee" Relationship="LibraryModel.FK_Issue_Worker" FromRole="Issue" ToRole="Employee" />
+          <Property Name="IsReturned" Type="Boolean" Nullable="false" />
+          <Property Name="IsPaidFor" Type="Boolean" Nullable="false" />
+          <Property Name="DateTurnIn" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="PublishHouse">
           <Key>
@@ -654,6 +661,7 @@
           <EntitySetMapping Name="Book">
             <EntityTypeMapping TypeName="LibraryModel.Book">
               <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="PublishHouseID" ColumnName="PublishHouseID" />
                 <ScalarProperty Name="SectionID" ColumnName="SectionID" />
@@ -713,6 +721,8 @@
           <EntitySetMapping Name="Issue">
             <EntityTypeMapping TypeName="LibraryModel.Issue">
               <MappingFragment StoreEntitySet="Issue">
+                <ScalarProperty Name="DateTurnIn" ColumnName="DateTurnIn" />
+                <ScalarProperty Name="IsPaidFor" ColumnName="IsPaidFor" />
                 <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
                 <ScalarProperty Name="DateReturn" ColumnName="DateReturn" />
                 <ScalarProperty Name="DateIssue" ColumnName="DateIssue" />
