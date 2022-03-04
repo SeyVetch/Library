@@ -444,12 +444,12 @@
           <Property Name="SectionID" Type="Int32" Nullable="false" />
           <Property Name="PublishHouseID" Type="Int32" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
           <NavigationProperty Name="PublishHouse" Relationship="LibraryModel.FK_Book_PublishHouse" FromRole="Book" ToRole="PublishHouse" />
           <NavigationProperty Name="Section" Relationship="LibraryModel.FK_Book_Section" FromRole="Book" ToRole="Section" />
           <NavigationProperty Name="Issue" Relationship="LibraryModel.FK_Issue_Book" FromRole="Book" ToRole="Issue" />
           <NavigationProperty Name="Genre" Relationship="LibraryModel.BookGenre" FromRole="Book" ToRole="Genre" />
           <NavigationProperty Name="Author" Relationship="LibraryModel.BookAuthor" FromRole="Book" ToRole="Author" />
-          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -463,9 +463,9 @@
           <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Gender" Relationship="LibraryModel.FK_Client_Gender" FromRole="Client" ToRole="Gender" />
           <NavigationProperty Name="Issue" Relationship="LibraryModel.FK_Issue_Client" FromRole="Client" ToRole="Issue" />
-          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -505,13 +505,12 @@
           <Property Name="BookID" Type="Int32" Nullable="false" />
           <Property Name="DateIssue" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DateReturn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateTurnIn" Type="DateTime" Precision="0" />
           <Property Name="WorkerID" Type="Int32" />
+          <Property Name="IsPaidFor" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Book" Relationship="LibraryModel.FK_Issue_Book" FromRole="Issue" ToRole="Book" />
           <NavigationProperty Name="Client" Relationship="LibraryModel.FK_Issue_Client" FromRole="Issue" ToRole="Client" />
           <NavigationProperty Name="Employee" Relationship="LibraryModel.FK_Issue_Worker" FromRole="Issue" ToRole="Employee" />
-          <Property Name="IsReturned" Type="Boolean" Nullable="false" />
-          <Property Name="IsPaidFor" Type="Boolean" Nullable="false" />
-          <Property Name="DateTurnIn" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="PublishHouse">
           <Key>
@@ -721,9 +720,9 @@
           <EntitySetMapping Name="Issue">
             <EntityTypeMapping TypeName="LibraryModel.Issue">
               <MappingFragment StoreEntitySet="Issue">
-                <ScalarProperty Name="DateTurnIn" ColumnName="DateTurnIn" />
                 <ScalarProperty Name="IsPaidFor" ColumnName="IsPaidFor" />
                 <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
+                <ScalarProperty Name="DateTurnIn" ColumnName="DateTurnIn" />
                 <ScalarProperty Name="DateReturn" ColumnName="DateReturn" />
                 <ScalarProperty Name="DateIssue" ColumnName="DateIssue" />
                 <ScalarProperty Name="BookID" ColumnName="BookID" />
@@ -775,7 +774,7 @@
               <ScalarProperty Name="ID" ColumnName="AuthorID" />
             </EndProperty>
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

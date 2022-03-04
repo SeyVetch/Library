@@ -19,10 +19,9 @@ namespace Library.EF
         public int BookID { get; set; }
         public System.DateTime DateIssue { get; set; }
         public System.DateTime DateReturn { get; set; }
-        public Nullable<int> WorkerID { get; set; }
-        public bool IsReturned { get; set; }
-        public bool IsPaidFor { get; set; }
         public Nullable<System.DateTime> DateTurnIn { get; set; }
+        public Nullable<int> WorkerID { get; set; }
+        public bool IsPaidFor { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual Client Client { get; set; }
