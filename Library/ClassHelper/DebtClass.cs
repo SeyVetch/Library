@@ -10,12 +10,12 @@ namespace Library.ClassHelper
 {
     class DebtClass
     {
-        static double DebtClient(int IDClient)
+        public static double DebtClient(int IDClient)
         {
             var issues = AppData.Context.Issue.ToList().Where(i => i.ClientID == IDClient && i.IsPaidFor);
             var books = AppData.Context.Book.ToList();
             double result = 0;
-
+ 
             foreach (Issue issue in issues)
             {
                 DateTime dateReturn = issue.DateReturn;
@@ -41,6 +41,10 @@ namespace Library.ClassHelper
             }
 
             return result;
+        }
+        public static double Debt(double bookPrice, DateTime dateStart)
+        {
+            return bookPrice / 100 * ((int)(DateTime.Now - dateStart).TotalDays - 30);
         }
     }
 }

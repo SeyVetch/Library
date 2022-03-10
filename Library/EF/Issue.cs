@@ -11,7 +11,12 @@ namespace Library.EF
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Library.ClassHelper;
+    using Library.EF;
+
     public partial class Issue
     {
         public int ID { get; set; }
@@ -22,7 +27,13 @@ namespace Library.EF
         public Nullable<System.DateTime> DateTurnIn { get; set; }
         public Nullable<int> WorkerID { get; set; }
         public bool IsPaidFor { get; set; }
-    
+        public double Debt {
+            get
+            {
+                return DebtClass.Debt((double)AppData.Context.Book.FirstOrDefault(i => i.ID == this.BookID).Price, this.DateReturn);
+            }
+        }
+        
         public virtual Book Book { get; set; }
         public virtual Client Client { get; set; }
         public virtual Employee Employee { get; set; }
