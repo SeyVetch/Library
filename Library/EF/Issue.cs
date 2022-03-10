@@ -30,7 +30,7 @@ namespace Library.EF
         public double Debt {
             get
             {
-                return DebtClass.Debt((double)AppData.Context.Book.FirstOrDefault(i => i.ID == this.BookID).Price, this.DateReturn);
+                return DebtClass.Debt((double)AppData.Context.Book.FirstOrDefault(i => i.ID == this.BookID).Price, this.DateReturn, this.DateTurnIn, IsPaidFor);
             }
         }
         

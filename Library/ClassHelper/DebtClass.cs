@@ -42,9 +42,26 @@ namespace Library.ClassHelper
 
             return result;
         }
-        public static double Debt(double bookPrice, DateTime dateStart)
+        public static double Debt(double bookPrice, DateTime dateReturn, DateTime? dateTurnIn, bool isPaidFor)
         {
-            return bookPrice / 100 * ((int)(DateTime.Now - dateStart).TotalDays - 30);
+            if (isPaidFor)
+            {
+                return 0;
+            }
+            DateTime dateEnd;
+            if (dateTurnIn == null)
+            {
+                dateEnd = DateTime.Now;
+            }
+            else
+            {
+                dateEnd = (DateTime)dateTurnIn;
+            }
+            if (dateReturn >= dateEnd)
+            {
+                return 0;
+            }
+            return bookPrice / 100 * ((int)(dateEnd - dateReturn).TotalDays - 30);
         }
     }
 }
