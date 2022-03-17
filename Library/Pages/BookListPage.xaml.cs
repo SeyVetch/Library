@@ -97,7 +97,7 @@ namespace _13._01._22.Pages
         {
             var editBook = new Book();
 
-            if (lvBook.SelectedItem is Client)
+            if (lvBook.SelectedItem is Book)
             {
                 editBook = lvBook.SelectedItem as Book;
             }

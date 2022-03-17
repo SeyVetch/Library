@@ -127,7 +127,7 @@ namespace Library.Windows
                     editBook.Price = int.Parse(txtPrice.Text);
 
                     AppData.Context.SaveChanges();
-                    MessageBox.Show("Успех", "Данные читателя успешно изменены", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Успех", "Данные книги успешно изменены", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close();
                 }
                 catch (Exception ex)
