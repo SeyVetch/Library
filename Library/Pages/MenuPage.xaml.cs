@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Library.Windows;
 
 namespace _13._01._22.Pages
 {
@@ -52,8 +53,10 @@ namespace _13._01._22.Pages
 
         private void btnAddBook_Click(object sender, RoutedEventArgs e)
         {
-            Page P = new Pages.AddBookPage();
-            this.MW.SetPage(P);
+            AddBookWindow addBookWindow = new AddBookWindow();
+            this.Opacity = 0.2;
+            addBookWindow.ShowDialog();
+            this.Opacity = 1;
         }
     }
 }

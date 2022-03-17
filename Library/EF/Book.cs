@@ -32,6 +32,17 @@ namespace Library.EF
         public int PublishHouseID { get; set; }
         public bool IsDeleted { get; set; }
         public decimal Price { get; set; }
+        public string Authors { get
+                {
+                string res = "";
+                foreach (EF.Author A in Author)
+                {
+                    res += " " + A.LastName;
+                }
+                res.Trim();
+                return res;
+                } 
+        }
     
         public virtual PublishHouse PublishHouse { get; set; }
         public virtual Section Section { get; set; }

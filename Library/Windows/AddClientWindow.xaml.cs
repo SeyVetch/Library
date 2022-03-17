@@ -30,7 +30,7 @@ namespace Library.Windows
         {
             InitializeComponent();
             cmbGender.ItemsSource = AppData.Context.Gender.ToList();
-            cmbGender.DisplayMemberPath = "NameGender";
+            cmbGender.DisplayMemberPath = "Gender1";
             cmbGender.SelectedIndex = 0;
 
             isEdit = false;
@@ -197,10 +197,7 @@ namespace Library.Windows
                 {
                     MessageBox.Show(ex.Message.ToString());
                 }
-
             }
-
-
         }
 
         private void btnChoosePhoto_Click(object sender, RoutedEventArgs e)

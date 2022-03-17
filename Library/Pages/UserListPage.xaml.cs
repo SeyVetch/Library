@@ -46,23 +46,23 @@ namespace _13._01._22.Pages
             switch (cmbSort.SelectedIndex)
             {
                 case 0:
-                    clientList.OrderBy(i => i.ID).ToList();
+                    clientList = clientList.OrderBy(i => i.ID).ToList();
                     break;
 
                 case 1:
-                    clientList.OrderBy(i => i.LastName).ToList();
+                    clientList = clientList.OrderBy(i => i.LastName).ToList();
                     break;
 
                 case 2:
-                    clientList.OrderBy(i => i.FirstName).ToList();
+                    clientList = clientList.OrderBy(i => i.FirstName).ToList();
                     break;
 
                 case 3:
-                    clientList.OrderBy(i => i.Address).ToList();
+                    clientList = clientList.OrderBy(i => i.Address).ToList();
                     break;
 
                 default:
-                    clientList.OrderBy(i => i.ID).ToList();
+                    clientList = clientList.OrderBy(i => i.ID).ToList();
                     break;
             }
 

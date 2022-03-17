@@ -9,9 +9,35 @@
       Title="BookListPage">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
         <Label Content="Список книг" HorizontalAlignment="Center" 
-               Margin="0,33,0,0" VerticalAlignment="Top"
+              VerticalAlignment="Top"
                FontSize="30"/>
-        
+
+        <ListView x:Name="lvBook"
+                  Grid.Row="3"
+                  MouseDoubleClick="lvBook_MouseDoubleClick"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <!--KeyUp="lvReader_KeyUp"-->
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" Width="30" DisplayMemberBinding="{Binding ID}"/>
+                    <GridViewColumn Header="Книга" Width="100" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Автор" Width="100" DisplayMemberBinding="{Binding Book.Authors}"/>
+                    <GridViewColumn Header="Издатель" Width="100" DisplayMemberBinding="{Binding PublishHouse.Name}"/>
+                    <GridViewColumn Header="Секция" Width="100" DisplayMemberBinding="{Binding Section.SectionName}"/>
+                    <GridViewColumn Header="Дата публикации" Width="150" DisplayMemberBinding="{Binding DateRelease}"/>
+                    <GridViewColumn Header="Страниц" Width="70" DisplayMemberBinding="{Binding PageQty}"/>
+                    <GridViewColumn Header="Выдано" Width="70" DisplayMemberBinding="{Binding IssueStatus}"/>
+                    <GridViewColumn Header="Удалено" Width="70" DisplayMemberBinding="{Binding IsDeleted}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>
