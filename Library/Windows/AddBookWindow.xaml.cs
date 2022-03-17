@@ -77,8 +77,8 @@ namespace Library.Windows
 
             if (string.IsNullOrWhiteSpace(cmbAuthor.Text))
             {
-                MessageBox.Show("Поле Автор не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                //MessageBox.Show("Поле Автор не должно быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                //return;
             }
 
             if (string.IsNullOrWhiteSpace(cmbPublisher.Text))
@@ -119,7 +119,7 @@ namespace Library.Windows
                 try
                 {
                     editBook.Name = txtName.Text;
-                    editBook.AuthorID = cmbAuthor.SelectedIndex + 1;
+                    //editBook.AuthorID = cmbAuthor.SelectedIndex + 1;
                     editBook.PublishHouseID = cmbPublisher.SelectedIndex + 1;
                     editBook.SectionID = cmbSection.SelectedIndex + 1;
                     editBook.DateRelease = DateTime.Parse(txtDateRelease.Text);
@@ -147,7 +147,7 @@ namespace Library.Windows
                         EF.Book newBook = new EF.Book
                         {
                             Name = txtName.Text,
-                            AuthorID = cmbAuthor.SelectedIndex + 1,
+                            //AuthorID = cmbAuthor.SelectedIndex + 1,
                             PublishHouseID = cmbPublisher.SelectedIndex + 1,
                             SectionID = cmbSection.SelectedIndex + 1,
                             DateRelease = DateTime.Parse(txtDateRelease.Text),

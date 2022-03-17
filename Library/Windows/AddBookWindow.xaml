@@ -90,7 +90,8 @@
                  Grid.Column="1"
                  Margin="10 0 0 0"
                  Width="250"
-                 Height="25"/>
+                 Height="25"
+                 Visibility="Hidden"/>
 
         <ComboBox x:Name="cmbSection"
                  VerticalAlignment="Center"
